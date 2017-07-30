@@ -1,0 +1,20 @@
+<logical_host> 
+   <name>127.0.0.1</name> 
+   <port>8000</port> 
+  <env>CENTOS</env> 
+ </logical_host> 
+<logical_host>  
+   <name>127.0.0.1</name> 
+   <port>9000</port> 
+  <env>CENTOS</env> 
+</logical_host>
+<logical_host>  
+   <name>127.0.0.1</name> 
+   <port>10000</port> 
+  <env>UBUNTU</env> 
+</logical_host> 
+<logical_host>  
+   <name>127.0.0.1</name> 
+   <port>11000</port> 
+  <env>UBUNTU</env> 
+</logical_host>

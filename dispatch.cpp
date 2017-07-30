@@ -67,7 +67,7 @@ public:
 		Message* msg = NULL;
 		int count = ser_msg.count(type);
 		//cout << count << endl;
-		for(int i = 0; i < count; ++i, ++m)
+		for(int i = 0; i < 2; ++i, ++m)
 		{
 			if(conn_num[m->second] > max)
 			{
@@ -84,14 +84,15 @@ public:
 		ser_address.sin_port=htons(msg->port); 
                 ser_cli.insert(make_pair(ser_fd, cli_fd));
 		socklen_t length = sizeof(ser_address);
-		connect(ser_fd, (struct sockaddr *)&ser_address, length);
+		connect(ser_fd, (struct sockaddr *)&ser_address, length)
 		send(ser_fd, data, strlen(data), 0);	
-		sendMsgToCli(ser_fd, cli_fd);
+		sendMsgToCli(ser_fd, ser_address, cli_fd);
 	}
 	void sendMsgToCli(int ser_fd, int cli_fd)
 	{
 		int res = 0;
 		char buff[1024] = {0};
+                socklen_t len = sizeof(ser_address);
 		while((res=recv(ser_fd, buff, 1024, 0)))
 		{
 			send(cli_fd, buff, strlen(buff), 0);
@@ -104,4 +105,8 @@ private:
     map<Message*, int> conn_num;
     int ser_fd; 
 };
-
+int main()
+{
+	Dispatch dis;
+	return 0;
+}
